@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Vixitask</string>
+    <string name="create">Create</string>
+    <string name="done">Done</string>
+    <string name="active_tasks">Active Tasks</string>
+    <string name="inactive_tasks">Inactive Task</string>
+    <string name="create_task">Create Task</string>
+    <string name="task_title">Task Title</string>
+    <string name="date">Date</string>
+</resources>
