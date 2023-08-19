@@ -46,17 +46,21 @@ import java.util.Locale
 fun TaskActiveCard(
     title: String,
     dateTime: String,
+    onClick: () -> Unit = {},
     onDone: () -> Unit = {},
     onShare: () -> Unit = {},
-    onDelete: () -> Unit = {}
+    onDelete: () -> Unit = {},
+    modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clip(shape = MaterialTheme.shapes.extraLarge)
             .background(color = MaterialTheme.colorScheme.tertiary)
-            .clickable { },
+            .clickable {
+                onClick()
+            },
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -72,14 +76,8 @@ fun TaskActiveCard(
                 maxLines = 2
             )
 
-            val inputFormat =
-                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("dd-MMM-yyyy - hh:mm:ss a", Locale.getDefault())
-            val date = inputFormat.parse(dateTime)
-            val formattedDate = outputFormat.format(date ?: Date())
-
             Text(
-                text = formattedDate,
+                text = dateTime,
                 color = Color.Black,
                 style = MaterialTheme.typography.bodySmall
             )
@@ -160,16 +158,20 @@ fun TaskActiveCard(
 fun TaskInactiveCard(
     title: String,
     dateTime: String,
+    onClick: () -> Unit = {},
     onShare: () -> Unit = {},
-    onDelete: () -> Unit = {}
+    onDelete: () -> Unit = {},
+    modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clip(shape = MaterialTheme.shapes.extraLarge)
             .background(color = MaterialTheme.colorScheme.secondary)
-            .clickable { },
+            .clickable {
+                onClick()
+            },
         contentAlignment = Alignment.Center
     ) {
         Column(
