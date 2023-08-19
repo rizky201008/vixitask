@@ -7,4 +7,8 @@
     <string name="create_task">Create Task</string>
     <string name="task_title">Task Title</string>
     <string name="date">Date</string>
+    <string name="update_task">Update Task</string>
+    <string name="update">Update</string>
+    <string name="detail_task">Task Detail</string>
+    <string name="search_tasks">Search Tasks</string>
 </resources>
