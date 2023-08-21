@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Vixitask</string>
-    <string name="create">Create</string>
+    <string name="app_name" translatable="false">Vixitask</string>
     <string name="done">Done</string>
     <string name="active_tasks">Active Tasks</string>
     <string name="inactive_tasks">Inactive Task</string>
@@ -11,4 +10,6 @@
     <string name="update">Update</string>
     <string name="detail_task">Task Detail</string>
     <string name="search_tasks">Search Tasks</string>
+    <string name="at">"at "</string>
+    <string name="create">Create</string>
 </resources>
