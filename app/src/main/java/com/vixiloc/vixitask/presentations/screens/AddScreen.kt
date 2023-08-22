@@ -22,8 +22,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -34,21 +34,26 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.R
-import com.vixiloc.vixitask.presentations.components.TextFieldDefault
+import com.vixiloc.vixitask.presentations.components.TextFieldForm
 import com.vixiloc.vixitask.presentations.components.TopBarBack
+import com.vixiloc.vixitask.presentations.viewmodels.AddScreenVm
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import kotlinx.coroutines.launch
+import org.koin.androidx.compose.getViewModel
 import java.util.Calendar
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddScreen(navHostController: NavHostController) {
-    val title = remember { mutableStateOf("") }
-    val date = remember { mutableStateOf("") }
+fun AddScreen(navHostController: NavHostController, viewModel: AddScreenVm = getViewModel()) {
+    val title = viewModel.title.collectAsState()
+    val date = viewModel.date.collectAsState()
     val mYear: Int
     val mMonth: Int
     val mDay: Int
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val blank = viewModel.blank.collectAsState().value
 
     // Initializing a Calendar
     val mCalendar = Calendar.getInstance()
@@ -63,7 +68,7 @@ fun AddScreen(navHostController: NavHostController) {
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, mYear: Int, mMonth: Int, mDayOfMonth: Int ->
-            date.value = "$mDayOfMonth - ${mMonth + 1} - $mYear"
+            viewModel.updateDate("$mDayOfMonth - ${mMonth + 1} - $mYear")
         }, mYear, mMonth, mDay
     )
 
@@ -100,11 +105,11 @@ fun AddScreen(navHostController: NavHostController) {
             ) {
 
                 item {
-                    TextFieldDefault(
+                    TextFieldForm(
                         modifier = Modifier.padding(horizontal = 30.dp),
                         label = stringResource(R.string.task_title),
                         value = title.value,
-                        onChange = { title.value = it },
+                        onChange = { viewModel.updateTitle(it) },
                         leadingIcon = {
                             Icon(imageVector = Icons.Outlined.Notes, contentDescription = null)
                         }
@@ -112,12 +117,12 @@ fun AddScreen(navHostController: NavHostController) {
                 }
 
                 item {
-                    TextFieldDefault(
+                    TextFieldForm(
                         modifier = Modifier
                             .padding(horizontal = 30.dp),
                         label = stringResource(R.string.date),
                         value = date.value,
-                        onChange = { date.value = it },
+                        onChange = { viewModel.updateDate(it) },
                         leadingIcon = {
                             IconButton(onClick = {
                                 datePickerDialog.show()
@@ -134,7 +139,14 @@ fun AddScreen(navHostController: NavHostController) {
 
                 item {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            scope.launch {
+                                viewModel.save()
+                                if (!blank) {
+                                    navHostController.navigateUp()
+                                }
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 30.dp, vertical = 20.dp),
@@ -142,7 +154,7 @@ fun AddScreen(navHostController: NavHostController) {
                         Text(
                             text = stringResource(id = R.string.create),
                             style = MaterialTheme.typography.headlineSmall,
-                            fontSize = 28.sp
+                            fontSize = 20.sp
                         )
                     }
                 }

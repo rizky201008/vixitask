@@ -22,8 +22,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -32,23 +33,35 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.R
-import com.vixiloc.vixitask.presentations.components.TextFieldDefault
+import com.vixiloc.vixitask.presentations.components.TextFieldForm
 import com.vixiloc.vixitask.presentations.components.TopBarBack
+import com.vixiloc.vixitask.presentations.viewmodels.UpdateScreenVm
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import kotlinx.coroutines.launch
+import org.koin.androidx.compose.getViewModel
 import java.util.Calendar
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpdateScreen(navHostController: NavHostController) {
-    val title = remember { mutableStateOf("") }
-    val date = remember { mutableStateOf("01 - 10 - 2030") }
+fun UpdateScreen(
+    navHostController: NavHostController,
+    taskId: Int?,
+    viewModel: UpdateScreenVm = getViewModel()
+) {
+    val title = viewModel.title.collectAsState()
+    val date = viewModel.date.collectAsState()
     val year: Int
     val month: Int
     val day: Int
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val blank = viewModel.blank.collectAsState().value
+
+    LaunchedEffect(key1 = context) {
+        viewModel.getTask(taskId!!)
+    }
 
     // Initializing a Calendar
     val mCalendar = Calendar.getInstance()
@@ -63,7 +76,7 @@ fun UpdateScreen(navHostController: NavHostController) {
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-            date.value = "$dayOfMonth - ${month + 1} - $year"
+            viewModel.updateDate("$dayOfMonth - ${month + 1} - $year")
         }, year, month, day
     )
 
@@ -100,11 +113,15 @@ fun UpdateScreen(navHostController: NavHostController) {
             ) {
 
                 item {
-                    TextFieldDefault(
+                    TextFieldForm(
                         modifier = Modifier.padding(horizontal = 30.dp),
                         label = stringResource(R.string.task_title),
                         value = title.value,
-                        onChange = { title.value = it },
+                        onChange = {
+                            scope.launch {
+                                viewModel.updateTitle(it)
+                            }
+                        },
                         leadingIcon = {
                             Icon(imageVector = Icons.Outlined.Notes, contentDescription = null)
                         }
@@ -112,12 +129,16 @@ fun UpdateScreen(navHostController: NavHostController) {
                 }
 
                 item {
-                    TextFieldDefault(
+                    TextFieldForm(
                         modifier = Modifier
                             .padding(horizontal = 30.dp),
                         label = stringResource(R.string.date),
                         value = date.value,
-                        onChange = { date.value = it },
+                        onChange = {
+                            scope.launch {
+                                viewModel.updateDate(it)
+                            }
+                        },
                         leadingIcon = {
                             IconButton(onClick = {
                                 datePickerDialog.show()
@@ -134,7 +155,14 @@ fun UpdateScreen(navHostController: NavHostController) {
 
                 item {
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            scope.launch {
+                                viewModel.update()
+                                if (!blank) {
+                                    navHostController.navigateUp()
+                                }
+                            }
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 30.dp, vertical = 20.dp),
@@ -142,7 +170,7 @@ fun UpdateScreen(navHostController: NavHostController) {
                         Text(
                             text = stringResource(id = R.string.update),
                             style = MaterialTheme.typography.headlineSmall,
-                            fontSize = 28.sp
+                            fontSize = 20.sp
                         )
                     }
                 }
@@ -156,6 +184,5 @@ fun UpdateScreen(navHostController: NavHostController) {
 @Composable
 fun UpdateScreenPreview() {
     VixitaskTheme {
-        UpdateScreen(navHostController = rememberNavController())
     }
 }
