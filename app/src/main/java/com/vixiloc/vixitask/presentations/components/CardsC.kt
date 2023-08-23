@@ -85,7 +85,7 @@ fun TaskActiveCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp),
+                    .padding(top = 30.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -113,18 +113,14 @@ fun TaskActiveCard(
                 ) {
                     IconButton(
                         onClick = { onDelete() },
-                        modifier = Modifier
-                            .width(30.dp)
-                            .height(30.dp)
-                            .size(20.dp)
-                            .clip(shape = CircleShape)
-                            .background(color = Color.White),
+                        modifier = Modifier,
                         colors = IconButtonDefaults.iconButtonColors(
                             containerColor = Color.Transparent,
                             contentColor = Color.Black
                         )
                     ) {
                         Icon(
+                            modifier = Modifier.size(30.dp),
                             imageVector = Icons.Filled.DeleteForever,
                             contentDescription = "Delete",
                         )
@@ -132,18 +128,14 @@ fun TaskActiveCard(
 
                     IconButton(
                         onClick = { onShare() },
-                        modifier = Modifier
-                            .width(30.dp)
-                            .height(30.dp)
-                            .size(20.dp)
-                            .clip(shape = CircleShape)
-                            .background(color = Color.White),
+                        modifier = Modifier,
                         colors = IconButtonDefaults.iconButtonColors(
                             containerColor = Color.Transparent,
                             contentColor = Color.Black
                         )
                     ) {
                         Icon(
+                            modifier = Modifier.size(30.dp),
                             imageVector = Icons.Filled.Share,
                             contentDescription = "Share",
                         )
@@ -192,7 +184,7 @@ fun TaskInactiveCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp),
+                    .padding(top = 30.dp),
                 horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -205,18 +197,14 @@ fun TaskInactiveCard(
                     ) {
                         IconButton(
                             onClick = { onDelete() },
-                            modifier = Modifier
-                                .width(30.dp)
-                                .height(30.dp)
-                                .size(20.dp)
-                                .clip(shape = CircleShape)
-                                .background(color = Color.White),
+                            modifier = Modifier,
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = Color.Transparent,
                                 contentColor = Color.Black
                             )
                         ) {
                             Icon(
+                                modifier = Modifier.size(30.dp),
                                 imageVector = Icons.Filled.DeleteForever,
                                 contentDescription = "Delete",
                             )
@@ -224,18 +212,14 @@ fun TaskInactiveCard(
 
                         IconButton(
                             onClick = { onShare() },
-                            modifier = Modifier
-                                .width(30.dp)
-                                .height(30.dp)
-                                .size(20.dp)
-                                .clip(shape = CircleShape)
-                                .background(color = Color.White),
+                            modifier = Modifier,
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = Color.Transparent,
                                 contentColor = Color.Black
                             )
                         ) {
                             Icon(
+                                modifier = Modifier.size(30.dp),
                                 imageVector = Icons.Filled.Share,
                                 contentDescription = "Share",
                             )
