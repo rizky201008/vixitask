@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Vixitask</string>
+    <string name="done">Sudah</string>
+    <string name="active_tasks">Tugas Aktif</string>
+    <string name="inactive_tasks">Tugas Nonaktif</string>
+    <string name="create_task">Buat Tugas</string>
+    <string name="task_title">Judul Tugas</string>
+    <string name="date">Tanggal</string>
+    <string name="update_task">Ubah Tugas</string>
+    <string name="update">Ubah</string>
+    <string name="detail_task">Detail Tugas</string>
+    <string name="search_tasks">Cari Tugas</string>
+    <string name="at">pada</string>
+    <string name="create">Buat</string>
+    <string name="nothing">Tidak ada yang bisa ditampilkan di sini</string>
+</resources>

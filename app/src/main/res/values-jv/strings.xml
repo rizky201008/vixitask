@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vixitask</string>
+    <string name="done">Mari</string>
+    <string name="active_tasks">Tugas Aktif</string>
+    <string name="inactive_tasks">Tugas Gak Aktif</string>
+    <string name="create_task">Nggawe Tugas</string>
+    <string name="task_title">Judul Tugas</string>
+    <string name="date">Tanggal</string>
+    <string name="update_task">Ngganti Tugas</string>
+    <string name="update">Ngganti</string>
+    <string name="detail_task">Rincian Tugas</string>
+    <string name="search_tasks">Nggolek Tugas</string>
+    <string name="at">Ing</string>
+    <string name="create">Nggawe</string>
+    <string name="nothing">Ora ana sing bisa ditampilake ing kene</string>
+</resources>

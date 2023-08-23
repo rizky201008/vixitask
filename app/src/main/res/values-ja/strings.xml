@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vixitask</string>
+    <string name="done">終わり</string>
+    <string name="active_tasks">アクティブなタスク</string>
+    <string name="inactive_tasks">非アクティブなタスク</string>
+    <string name="create_task">タスクの作成</string>
+    <string name="task_title">タスクのタイトル</string>
+    <string name="date">日付</string>
+    <string name="update_task">更新タスク</string>
+    <string name="update">アップデート</string>
+    <string name="detail_task">タスクの詳細</string>
+    <string name="search_tasks">タスクの検索</string>
+    <string name="at">で</string>
+    <string name="create">作成する</string>
+    <string name="nothing">ここには何も表示できません</string>
+</resources>
