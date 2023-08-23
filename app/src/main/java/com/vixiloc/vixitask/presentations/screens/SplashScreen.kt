@@ -22,7 +22,7 @@ import com.vixiloc.vixitask.domain.navigations.MainDestination
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navHostController: NavHostController) {
+fun SplashScreen(navHostController: NavHostController,onInterstitialRequest: () -> Unit) {
     var isPlaying by remember { mutableStateOf(true) }
     val composition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
@@ -47,6 +47,7 @@ fun SplashScreen(navHostController: NavHostController) {
     LaunchedEffect(key1 = true) {
         delay(4000)
         navHostController.popBackStack()
+        onInterstitialRequest()
         navHostController.navigate(MainDestination.Home.route)
     }
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

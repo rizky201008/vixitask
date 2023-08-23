@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -53,7 +54,6 @@ fun AddScreen(navHostController: NavHostController, viewModel: AddScreenVm = get
     val mDay: Int
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val blank = viewModel.blank.collectAsState().value
 
     // Initializing a Calendar
     val mCalendar = Calendar.getInstance()
@@ -142,9 +142,6 @@ fun AddScreen(navHostController: NavHostController, viewModel: AddScreenVm = get
                         onClick = {
                             scope.launch {
                                 viewModel.save()
-                                if (!blank) {
-                                    navHostController.navigateUp()
-                                }
                             }
                         },
                         modifier = Modifier
@@ -159,6 +156,11 @@ fun AddScreen(navHostController: NavHostController, viewModel: AddScreenVm = get
                     }
                 }
 
+            }
+        }
+        if(!viewModel.blank.collectAsState().value) {
+            LaunchedEffect(key1 = context) {
+                navHostController.navigateUp()
             }
         }
     }

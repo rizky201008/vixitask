@@ -74,7 +74,7 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = g
         Column(modifier = Modifier.fillMaxWidth()) {
             TopBarTransparent(
                 icon = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { navHostController.navigate(MainDestination.About.route) }) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = "Information",
@@ -83,6 +83,13 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = g
                     }
                 },
                 actions = {
+                    IconButton(onClick = { visible.value = !visible.value }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Search,
+                            contentDescription = "Search",
+                            modifier = Modifier.size(30.dp)
+                        )
+                    }
                     Row(
                         modifier = Modifier
                             .border(
@@ -107,14 +114,6 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = g
                             text = stringResource(R.string.create),
                             style = MaterialTheme.typography.labelSmall,
                             modifier = Modifier.padding(end = 10.dp)
-                        )
-                    }
-
-                    IconButton(onClick = { visible.value = !visible.value }) {
-                        Icon(
-                            imageVector = Icons.Outlined.Search,
-                            contentDescription = "Search",
-                            modifier = Modifier.size(30.dp)
                         )
                     }
                 }
