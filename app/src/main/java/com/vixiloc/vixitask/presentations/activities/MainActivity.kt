@@ -23,6 +23,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.vixiloc.vixitask.BuildConfig
 import com.vixiloc.vixitask.domain.navigations.MainNavigation
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
@@ -69,14 +70,13 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun showInterstialAd() {
-        Log.i("MYADS", "showInterstialAd: Called!")
+        val adunit = BuildConfig.INTERSTITIAL_KEY
         InterstitialAd.load(
             this,
-            "ca-app-pub-3940256099942544/1033173712",
+            adunit,
             AdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    Log.i("MYADS", "onAdFailedToLoad: $adError")
                 }
 
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -85,11 +85,6 @@ class MainActivity : ComponentActivity() {
                             override fun onAdDismissedFullScreenContent() {
                                 super.onAdDismissedFullScreenContent()
                                 // Show a toast here indicating that the ad has been dismissed
-                                Toast.makeText(
-                                    this@MainActivity,
-                                    "Ad dismissed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                             }
 
                             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
