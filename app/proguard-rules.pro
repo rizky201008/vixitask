@@ -20,3 +20,5 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -dontwarn javax.annotation.Nullable
+# Keep the BuildConfig
+-keep class com.vixiloc.vixitask.BuildConfig { *; }

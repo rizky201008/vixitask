@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -20,6 +23,17 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        android.buildFeatures.buildConfig = true
+
+        val properties = Properties()
+        properties.load(FileInputStream(project.rootProject.file("local.properties")))
+
+        buildConfigField(
+            "String",
+            "INTERSTITIAL_KEY",
+            "\"${properties.getProperty("INTERSTITIAL_KEY")}\""
+        )
     }
 
     buildTypes {
@@ -77,7 +91,7 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("com.google.android.material:material:1.10.0-alpha06")
     implementation("com.airbnb.android:lottie-compose:6.0.1")
-    implementation ("com.google.android.gms:play-services-ads:22.2.0")
+    implementation("com.google.android.gms:play-services-ads:22.2.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
