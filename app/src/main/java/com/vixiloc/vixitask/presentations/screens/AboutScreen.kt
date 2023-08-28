@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,12 +34,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.R
+import com.vixiloc.vixitask.domain.navigations.MainDestination
 import com.vixiloc.vixitask.presentations.components.TopBarBack
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(navHostController: NavHostController) {
+    val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
             TopBarBack(title = stringResource(R.string.information), icon = {
@@ -91,7 +94,7 @@ fun AboutScreen(navHostController: NavHostController) {
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .clickable { /*TODO Implement Privacy Policy*/ },
+                        .clickable { uriHandler.openUri("https://vixiloc.co.id/2023/08/28/vixitask-privacy-policy/") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,
                         headlineColor = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -117,7 +120,7 @@ fun AboutScreen(navHostController: NavHostController) {
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .clickable { /*TODO Implement Open Source License*/ },
+                        .clickable { navHostController.navigate(MainDestination.OsLicense.route) },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,
                         headlineColor = MaterialTheme.colorScheme.onSecondaryContainer,
