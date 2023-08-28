@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun showInterstialAd() {
-        val adunit = BuildConfig.INTERSTITIAL_KEY
+       /* val adunit = BuildConfig.INTERSTITIAL_KEY
         InterstitialAd.load(
             this,
             adunit,
@@ -101,5 +101,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         )
+        */
     }
 }
