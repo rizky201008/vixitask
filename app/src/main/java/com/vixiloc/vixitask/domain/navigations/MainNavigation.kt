@@ -14,6 +14,7 @@ import com.vixiloc.vixitask.presentations.screens.AboutScreen
 import com.vixiloc.vixitask.presentations.screens.AddScreen
 import com.vixiloc.vixitask.presentations.screens.DetailScreen
 import com.vixiloc.vixitask.presentations.screens.HomeScreen
+import com.vixiloc.vixitask.presentations.screens.OsLicense
 import com.vixiloc.vixitask.presentations.screens.SplashScreen
 import com.vixiloc.vixitask.presentations.screens.UpdateScreen
 
@@ -43,6 +44,12 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
                     animationSpec = tween(700)
                 )
             },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
         ) {
             HomeScreen(navHostController = navHostController)
         }
@@ -56,7 +63,13 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
             },
             exitTransition = {
                 slideOutOfContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
                     animationSpec = tween(700)
                 )
             },
@@ -78,7 +91,13 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
             },
             exitTransition = {
                 slideOutOfContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
                     animationSpec = tween(700)
                 )
             },
@@ -95,7 +114,13 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
             },
             exitTransition = {
                 slideOutOfContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
                     animationSpec = tween(700)
                 )
             },
@@ -114,12 +139,35 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
             },
             exitTransition = {
                 slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            }
+        ) {
+            AboutScreen(navHostController = navHostController)
+        }
+        composable(
+            route = MainDestination.OsLicense.route,
+            enterTransition = {
+                slideIntoContainer(
                     towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
                     animationSpec = tween(700)
                 )
             },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    animationSpec = tween(700)
+                )
+            },
         ) {
-            AboutScreen(navHostController = navHostController)
+            OsLicense(navHostController = navHostController)
         }
     }
 }
@@ -128,6 +176,7 @@ sealed class MainDestination(val route: String) {
     object Splash : MainDestination(route = "splash")
     object Home : MainDestination(route = "home")
     object About : MainDestination(route = "about")
+    object OsLicense : MainDestination(route = "license")
     object Detail : MainDestination(route = "detail/{taskId}") {
         fun createRoute(taskId: Int) = "detail/$taskId"
     }
