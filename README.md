@@ -13,6 +13,13 @@ Vixitask is simple and leighweight tasks management app. This app is created to 
  5. [com.google.devtools.ksp](https://github.com/google/ksp)
  6. [com.airbnb.android:lottie-compose](https://github.com/airbnb/lottie-android)
 
+## Language Supported
+
+ 1. English
+ 2. Javanese
+ 3. Japanese
+ 4. Bahasa Indonesia
+
 ```
    Copyright 2023 vixiloc
 
