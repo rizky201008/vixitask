@@ -20,6 +20,8 @@ Vixitask is simple and leighweight tasks management app. This app is created to 
  3. Japanese
  4. Bahasa Indonesia
 
+## License
+
 ```
    Copyright 2023 vixiloc
 
