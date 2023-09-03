@@ -33,8 +33,8 @@ fun OsLicense(navHostController: NavHostController) {
         Column(modifier = Modifier.padding(it)) {
             Text(
                 text = stringResource(R.string.license),
-                style = MaterialTheme.typography.bodySmall,
-                modifier = Modifier.fillMaxWidth(0.9f)
+                modifier = Modifier.fillMaxWidth(0.9f),
+                fontSize = MaterialTheme.typography.bodySmall.fontSize
             )
         }
     }
