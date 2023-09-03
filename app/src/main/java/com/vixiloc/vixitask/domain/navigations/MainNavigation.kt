@@ -20,7 +20,7 @@ import com.vixiloc.vixitask.presentations.screens.UpdateScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: () -> Unit) {
+fun MainNavigation(navHostController: NavHostController) {
     NavHost(navController = navHostController, startDestination = MainDestination.Splash.route) {
         composable(
             route = MainDestination.Splash.route,
@@ -33,7 +33,6 @@ fun MainNavigation(navHostController: NavHostController, onInterstitialRequest: 
         ) {
             SplashScreen(
                 navHostController = navHostController,
-                onInterstitialRequest = { onInterstitialRequest() }
             )
         }
         composable(
