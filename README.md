@@ -2,7 +2,7 @@
 # Vixitask - Tasks management app
 [![Download Vixitask - Tasks Management](https://img.shields.io/sourceforge/dt/vixitask.svg)](https://sourceforge.net/projects/vixitask/files/latest/download)
 
-Vixitask is simple and leighweight tasks management app. This app is created to boost your productivity by manage all your tasks on your phone. This app is Open Source, if you wan't to improve this app you can create pull request to Vixitask repository on github.
+Vixitask is simple and lightweight tasks management app. This app is created to boost your productivity by manage all your tasks on your phone. This app is Open Source, if you want to improve this app you can create pull request to Vixitask repository on github.
 
 ## Libraries used in this project
 
