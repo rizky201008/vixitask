@@ -12,8 +12,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.vixiloc.vixitask.R
 import com.vixiloc.vixitask.presentations.components.TopBarBack
@@ -30,10 +32,12 @@ fun OsLicense(navHostController: NavHostController) {
             }, stringResource(id = R.string.os_license))
         }
     ) {
-        Column(modifier = Modifier.padding(it)) {
+        Column(
+            modifier = Modifier.padding(it),
+        ) {
             Text(
                 text = stringResource(R.string.license),
-                modifier = Modifier.fillMaxWidth(0.9f),
+                modifier = Modifier.fillMaxWidth(1f).padding(10.dp),
                 fontSize = MaterialTheme.typography.bodySmall.fontSize
             )
         }
