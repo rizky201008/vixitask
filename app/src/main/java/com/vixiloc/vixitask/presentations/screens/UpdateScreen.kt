@@ -158,9 +158,6 @@ fun UpdateScreen(
                         onClick = {
                             scope.launch {
                                 viewModel.update()
-                                if (!blank) {
-                                    navHostController.navigateUp()
-                                }
                             }
                         },
                         modifier = Modifier
@@ -174,7 +171,11 @@ fun UpdateScreen(
                         )
                     }
                 }
-
+            }
+            if (!viewModel.blank.collectAsState().value) {
+                LaunchedEffect(key1 = context) {
+                    navHostController.navigateUp()
+                }
             }
         }
     }

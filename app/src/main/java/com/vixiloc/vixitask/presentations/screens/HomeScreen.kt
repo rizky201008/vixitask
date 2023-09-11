@@ -231,8 +231,7 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = g
                                 action = Intent.ACTION_SEND
                                 putExtra(
                                     Intent.EXTRA_TEXT,
-                                    "Hello, this is my task:\n" +
-                                            "Title : ${task.title}\n" +
+                                    "Task : ${task.title}\n" +
                                             "At : ${task.date}"
                                 )
                                 type = "text/plain"
