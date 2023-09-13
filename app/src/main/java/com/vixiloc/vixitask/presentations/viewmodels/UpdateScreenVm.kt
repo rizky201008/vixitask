@@ -16,6 +16,9 @@ class UpdateScreenVm(private val taskRepository: TaskRepository) : ViewModel() {
     private val _date = MutableStateFlow("")
     val date = _date.asStateFlow()
 
+    private val _active = MutableStateFlow(false)
+    val active = _active.asStateFlow()
+
     private val _id = MutableStateFlow(0)
     val id = _id.asStateFlow()
 
@@ -30,12 +33,14 @@ class UpdateScreenVm(private val taskRepository: TaskRepository) : ViewModel() {
                 _title.update { task.title }
                 _date.update { task.date }
                 _id.update { task.id!! }
+                _active.update { task.isDone }
             }
         }
     }
 
     fun update() {
-        val task = Tasks(id = id.value, title = title.value, date = date.value)
+        val task =
+            Tasks(id = id.value, title = title.value, date = date.value, isDone = active.value)
         if (title.value.isNotBlank() && date.value.isNotBlank()) {
             _blank.update { false }
             viewModelScope.launch {

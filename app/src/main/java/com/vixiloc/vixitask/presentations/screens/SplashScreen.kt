@@ -18,7 +18,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.vixiloc.vixitask.R
-import com.vixiloc.vixitask.domain.navigations.MainDestination
+import com.vixiloc.vixitask.presentations.MainDestination
 import kotlinx.coroutines.delay
 
 @Composable

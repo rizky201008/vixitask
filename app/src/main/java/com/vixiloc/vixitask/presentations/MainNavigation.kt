@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.domain.navigations
+package com.vixiloc.vixitask.presentations
 
 import android.os.Build
 import androidx.annotation.RequiresApi

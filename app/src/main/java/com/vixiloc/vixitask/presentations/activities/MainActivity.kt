@@ -15,7 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
-import com.vixiloc.vixitask.domain.navigations.MainNavigation
+import com.vixiloc.vixitask.presentations.MainNavigation
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 
 class MainActivity : ComponentActivity() {

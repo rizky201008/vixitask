@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.R
-import com.vixiloc.vixitask.domain.navigations.MainDestination
+import com.vixiloc.vixitask.presentations.MainDestination
 import com.vixiloc.vixitask.presentations.components.TopBarBack
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 
