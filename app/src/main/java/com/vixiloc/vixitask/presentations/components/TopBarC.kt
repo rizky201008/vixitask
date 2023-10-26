@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

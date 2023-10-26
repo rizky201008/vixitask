@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.presentations.MainNavigation
-import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)

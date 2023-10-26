@@ -24,7 +24,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vixiloc.vixitask.R
-import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
