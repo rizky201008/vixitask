@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.data.dao
+package com.vixiloc.vixitask.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.vixiloc.vixitask.data.model.Tasks
+import com.vixiloc.vixitask.domain.model.Tasks
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -30,5 +30,5 @@ interface TaskDao {
     fun searchTasks(query: String): Flow<List<Tasks>>
 
     @Query("SELECT * FROM tasks WHERE `id` = :id LIMIT 1")
-    fun getTask(id: Int): Flow<Tasks>
+    fun getTask(id: Int): Tasks
 }

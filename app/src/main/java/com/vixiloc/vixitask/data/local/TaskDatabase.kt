@@ -1,13 +1,12 @@
-package com.vixiloc.vixitask.data.database
+package com.vixiloc.vixitask.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.vixiloc.vixitask.data.dao.TaskDao
-import com.vixiloc.vixitask.data.model.Tasks
+import com.vixiloc.vixitask.data.local.dto.TasksDto
 
-@Database(entities = [Tasks::class], version = 1)
+@Database(entities = [TasksDto::class], version = 1)
 abstract class TaskDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao
 
