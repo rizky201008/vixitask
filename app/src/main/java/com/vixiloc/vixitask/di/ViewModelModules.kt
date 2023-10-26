@@ -18,7 +18,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        HomeScreenVm(get())
+        HomeScreenVm(get(), get(), get(), get())
     }
 
     viewModel {
@@ -26,6 +26,6 @@ val viewModelModule = module {
     }
 
     viewModel {
-        UpdateScreenVm(get())
+        UpdateScreenVm(get(), get())
     }
 }
