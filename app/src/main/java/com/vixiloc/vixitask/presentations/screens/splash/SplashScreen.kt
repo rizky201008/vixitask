@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.screens
+package com.vixiloc.vixitask.presentations.screens.splash
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

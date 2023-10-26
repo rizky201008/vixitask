@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.screens
+package com.vixiloc.vixitask.presentations.screens.about
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

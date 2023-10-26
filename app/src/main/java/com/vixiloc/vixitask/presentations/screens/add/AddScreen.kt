@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.screens
+package com.vixiloc.vixitask.presentations.screens.add
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
@@ -33,10 +33,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.vixiloc.vixitask.R
 import com.vixiloc.vixitask.presentations.components.TextFieldForm
 import com.vixiloc.vixitask.presentations.components.TopBarBack
-import com.vixiloc.vixitask.presentations.viewmodels.UpdateScreenVm
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
@@ -45,39 +45,30 @@ import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun UpdateScreen(
-    navHostController: NavHostController,
-    taskId: Int?,
-    viewModel: UpdateScreenVm = getViewModel()
-) {
+fun AddScreen(navHostController: NavHostController, viewModel: AddScreenVm = getViewModel()) {
     val title = viewModel.title.collectAsState()
     val date = viewModel.date.collectAsState()
-    val year: Int
-    val month: Int
-    val day: Int
+    val mYear: Int
+    val mMonth: Int
+    val mDay: Int
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val blank = viewModel.blank.collectAsState().value
-
-    LaunchedEffect(key1 = context) {
-        viewModel.getTask(taskId!!)
-    }
 
     // Initializing a Calendar
     val mCalendar = Calendar.getInstance()
 
     // Fetching current year, month and day
-    year = mCalendar.get(Calendar.YEAR)
-    month = mCalendar.get(Calendar.MONTH)
-    day = mCalendar.get(Calendar.DAY_OF_MONTH)
+    mYear = mCalendar.get(Calendar.YEAR)
+    mMonth = mCalendar.get(Calendar.MONTH)
+    mDay = mCalendar.get(Calendar.DAY_OF_MONTH)
 
     mCalendar.time = Date()
 
     val datePickerDialog = DatePickerDialog(
         context,
-        { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-            viewModel.updateDate("$dayOfMonth - ${month + 1} - $year")
-        }, year, month, day
+        { _: DatePicker, mYear: Int, mMonth: Int, mDayOfMonth: Int ->
+            viewModel.updateDate("$mDayOfMonth - ${mMonth + 1} - $mYear")
+        }, mYear, mMonth, mDay
     )
 
     Scaffold(
@@ -93,7 +84,7 @@ fun UpdateScreen(
                         )
                     }
                 },
-                title = stringResource(R.string.update_task),
+                title = stringResource(R.string.create_task),
             )
         }
     ) { paddingValues ->
@@ -117,11 +108,7 @@ fun UpdateScreen(
                         modifier = Modifier.padding(horizontal = 30.dp),
                         label = stringResource(R.string.task_title),
                         value = title.value,
-                        onChange = {
-                            scope.launch {
-                                viewModel.updateTitle(it)
-                            }
-                        },
+                        onChange = { viewModel.updateTitle(it) },
                         leadingIcon = {
                             Icon(imageVector = Icons.Outlined.Notes, contentDescription = null)
                         }
@@ -134,11 +121,7 @@ fun UpdateScreen(
                             .padding(horizontal = 30.dp),
                         label = stringResource(R.string.date),
                         value = date.value,
-                        onChange = {
-                            scope.launch {
-                                viewModel.updateDate(it)
-                            }
-                        },
+                        onChange = { viewModel.updateDate(it) },
                         leadingIcon = {
                             IconButton(onClick = {
                                 datePickerDialog.show()
@@ -157,7 +140,7 @@ fun UpdateScreen(
                     Button(
                         onClick = {
                             scope.launch {
-                                viewModel.update()
+                                viewModel.save()
                             }
                         },
                         modifier = Modifier
@@ -165,17 +148,18 @@ fun UpdateScreen(
                             .padding(horizontal = 30.dp, vertical = 20.dp),
                     ) {
                         Text(
-                            text = stringResource(id = R.string.update),
+                            text = stringResource(id = R.string.create),
                             style = MaterialTheme.typography.headlineSmall,
                             fontSize = 20.sp
                         )
                     }
                 }
+
             }
-            if (!viewModel.blank.collectAsState().value) {
-                LaunchedEffect(key1 = context) {
-                    navHostController.navigateUp()
-                }
+        }
+        if(!viewModel.blank.collectAsState().value) {
+            LaunchedEffect(key1 = context) {
+                navHostController.navigateUp()
             }
         }
     }
@@ -183,7 +167,8 @@ fun UpdateScreen(
 
 @Preview
 @Composable
-fun UpdateScreenPreview() {
+fun AddScreenPreview() {
     VixitaskTheme {
+        AddScreen(navHostController = rememberNavController())
     }
 }

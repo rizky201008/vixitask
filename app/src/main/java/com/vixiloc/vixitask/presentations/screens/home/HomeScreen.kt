@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.screens
+package com.vixiloc.vixitask.presentations.screens.home
 
 import android.content.Intent
 import android.os.Build
@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddCircle
 import androidx.compose.material.icons.outlined.Info
@@ -48,7 +47,6 @@ import com.vixiloc.vixitask.presentations.components.TaskActiveCard
 import com.vixiloc.vixitask.presentations.components.TaskInactiveCard
 import com.vixiloc.vixitask.presentations.components.TextFieldSearch
 import com.vixiloc.vixitask.presentations.components.TopBarTransparent
-import com.vixiloc.vixitask.presentations.viewmodels.HomeScreenVm
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel

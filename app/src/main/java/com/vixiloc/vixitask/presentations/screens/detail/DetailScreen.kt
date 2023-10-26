@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.screens
+package com.vixiloc.vixitask.presentations.screens.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -33,7 +33,6 @@ import androidx.navigation.NavHostController
 import com.vixiloc.vixitask.R
 import com.vixiloc.vixitask.presentations.MainDestination
 import com.vixiloc.vixitask.presentations.components.TopBarBack
-import com.vixiloc.vixitask.presentations.viewmodels.DetailScreenVm
 import com.vixiloc.vixitask.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
