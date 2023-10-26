@@ -1,10 +1,10 @@
 package com.vixiloc.vixitask.di
 
-import com.vixiloc.vixitask.presentations.viewmodels.AddScreenVm
-import com.vixiloc.vixitask.presentations.viewmodels.DetailScreenVm
-import com.vixiloc.vixitask.presentations.viewmodels.HomeScreenVm
-import com.vixiloc.vixitask.presentations.viewmodels.SplashScreenVm
-import com.vixiloc.vixitask.presentations.viewmodels.UpdateScreenVm
+import com.vixiloc.vixitask.presentations.screens.add.AddScreenVm
+import com.vixiloc.vixitask.presentations.screens.detail.DetailScreenVm
+import com.vixiloc.vixitask.presentations.screens.home.HomeScreenVm
+import com.vixiloc.vixitask.presentations.screens.splash.SplashScreenVm
+import com.vixiloc.vixitask.presentations.screens.update.UpdateScreenVm
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
