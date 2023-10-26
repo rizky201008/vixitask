@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.ui.theme
+package com.vixiloc.vixitask.presentations.ui.theme
 
 import android.app.Activity
 import androidx.compose.material3.MaterialTheme

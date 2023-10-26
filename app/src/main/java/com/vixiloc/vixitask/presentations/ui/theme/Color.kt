@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.ui.theme
+package com.vixiloc.vixitask.presentations.ui.theme
 import androidx.compose.ui.graphics.Color
 
 val md_theme_dark_primary = Color(0xFFC8BFFF)
