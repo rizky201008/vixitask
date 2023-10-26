@@ -33,7 +33,7 @@ import androidx.navigation.NavHostController
 import com.vixiloc.vixitask.R
 import com.vixiloc.vixitask.presentations.MainDestination
 import com.vixiloc.vixitask.presentations.components.TopBarBack
-import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 

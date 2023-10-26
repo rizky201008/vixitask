@@ -10,13 +10,13 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.vixiloc.vixitask.presentations.screens.AboutScreen
-import com.vixiloc.vixitask.presentations.screens.AddScreen
-import com.vixiloc.vixitask.presentations.screens.DetailScreen
-import com.vixiloc.vixitask.presentations.screens.HomeScreen
-import com.vixiloc.vixitask.presentations.screens.OsLicense
-import com.vixiloc.vixitask.presentations.screens.SplashScreen
-import com.vixiloc.vixitask.presentations.screens.UpdateScreen
+import com.vixiloc.vixitask.presentations.screens.about.AboutScreen
+import com.vixiloc.vixitask.presentations.screens.add.AddScreen
+import com.vixiloc.vixitask.presentations.screens.detail.DetailScreen
+import com.vixiloc.vixitask.presentations.screens.home.HomeScreen
+import com.vixiloc.vixitask.presentations.screens.license.OsLicense
+import com.vixiloc.vixitask.presentations.screens.splash.SplashScreen
+import com.vixiloc.vixitask.presentations.screens.update.UpdateScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

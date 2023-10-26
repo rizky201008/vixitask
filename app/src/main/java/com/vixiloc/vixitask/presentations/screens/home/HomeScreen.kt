@@ -48,7 +48,7 @@ import com.vixiloc.vixitask.presentations.components.TaskActiveCard
 import com.vixiloc.vixitask.presentations.components.TaskInactiveCard
 import com.vixiloc.vixitask.presentations.components.TextFieldSearch
 import com.vixiloc.vixitask.presentations.components.TopBarTransparent
-import com.vixiloc.vixitask.ui.theme.VixitaskTheme
+import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
