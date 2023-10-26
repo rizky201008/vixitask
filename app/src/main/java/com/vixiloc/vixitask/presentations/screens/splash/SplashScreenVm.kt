@@ -1,4 +1,4 @@
-package com.vixiloc.vixitask.presentations.viewmodels
+package com.vixiloc.vixitask.presentations.screens.splash
 
 import androidx.lifecycle.ViewModel
 import com.vixiloc.vixitask.data.repositories.TaskRepository
