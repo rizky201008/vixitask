@@ -1,7 +1,5 @@
 package com.vixiloc.vixitask.presentations
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
@@ -18,7 +16,6 @@ import com.vixiloc.vixitask.presentations.screens.license.OsLicense
 import com.vixiloc.vixitask.presentations.screens.splash.SplashScreen
 import com.vixiloc.vixitask.presentations.screens.update.UpdateScreen
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainNavigation(navHostController: NavHostController) {
     NavHost(navController = navHostController, startDestination = MainDestination.Splash.route) {
@@ -37,18 +34,6 @@ fun MainNavigation(navHostController: NavHostController) {
         }
         composable(
             route = MainDestination.Home.route,
-            exitTransition = {
-                slideOutOfContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
-                    animationSpec = tween(700)
-                )
-            },
-            popEnterTransition = {
-                slideIntoContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
-                    animationSpec = tween(700)
-                )
-            },
         ) {
             HomeScreen(navHostController = navHostController)
         }
@@ -132,22 +117,16 @@ fun MainNavigation(navHostController: NavHostController) {
             route = MainDestination.About.route,
             enterTransition = {
                 slideIntoContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
                     animationSpec = tween(700)
                 )
             },
             exitTransition = {
                 slideOutOfContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
+                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Left,
                     animationSpec = tween(700)
                 )
             },
-            popEnterTransition = {
-                slideIntoContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Companion.Right,
-                    animationSpec = tween(700)
-                )
-            }
         ) {
             AboutScreen(navHostController = navHostController)
         }
