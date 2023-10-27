@@ -94,32 +94,6 @@ fun AboutScreen(navHostController: NavHostController) {
                         .fillMaxWidth()
                         .padding(10.dp)
                         .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .clickable { uriHandler.openUri("https://vixiloc.co.id/2023/08/28/vixitask-privacy-policy/") },
-                    colors = ListItemDefaults.colors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        headlineColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                        supportingColor = MaterialTheme.colorScheme.onSecondaryContainer
-                    ),
-                    headlineText = {
-                        Text(
-                            text = stringResource(R.string.privacy_policy),
-                            style = MaterialTheme.typography.headlineLarge
-                        )
-                    },
-                    supportingText = {
-                        Text(
-                            text = stringResource(R.string.privacy_policy_support),
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                )
-            }
-            item {
-                ListItem(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp)
-                        .clip(shape = MaterialTheme.shapes.extraLarge)
                         .clickable { navHostController.navigate(MainDestination.OsLicense.route) },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,

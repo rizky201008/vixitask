@@ -52,7 +52,6 @@ import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.getViewModel
 
-@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = getViewModel()) {
@@ -81,30 +80,13 @@ fun HomeScreen(navHostController: NavHostController, viewModel: HomeScreenVm = g
                             modifier = Modifier.size(30.dp)
                         )
                     }
-                    Row(
-                        modifier = Modifier
-                            .border(
-                                width = 2.dp,
-                                color = MaterialTheme.colorScheme.onBackground,
-                                shape = MaterialTheme.shapes.extraLarge
-                            )
-                            .height(50.dp)
-                            .clickable {
-                                navHostController.navigate(MainDestination.Add.route)
-                            },
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
+                    IconButton(onClick = { navHostController.navigate(MainDestination.Add.route) }) {
                         Icon(
                             imageVector = Icons.Outlined.AddCircle,
                             contentDescription = "Create",
                             modifier = Modifier
                                 .padding(start = 10.dp)
                                 .size(35.dp)
-                        )
-                        Text(
-                            text = stringResource(R.string.create),
-                            style = MaterialTheme.typography.labelSmall,
-                            modifier = Modifier.padding(end = 10.dp)
                         )
                     }
                 }
