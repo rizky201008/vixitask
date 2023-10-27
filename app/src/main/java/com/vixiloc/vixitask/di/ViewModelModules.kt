@@ -10,19 +10,19 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel {
-        AddScreenVm(get())
+        AddScreenVm(addTask = get())
     }
 
     viewModel {
-        DetailScreenVm(get())
+        DetailScreenVm(getTaskById = get())
     }
 
     viewModel {
-        HomeScreenVm(get(), get(), get(), get())
+        HomeScreenVm(searchTasks = get(), setDoneTask = get(), deleteTask = get(), getTasks = get())
     }
 
     viewModel {
-        SplashScreenVm(get())
+        SplashScreenVm()
     }
 
     viewModel {
