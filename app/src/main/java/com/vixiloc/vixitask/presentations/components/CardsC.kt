@@ -1,7 +1,5 @@
 package com.vixiloc.vixitask.presentations.components
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,11 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DeleteForever
 import androidx.compose.material.icons.filled.Share
@@ -35,29 +31,23 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vixiloc.vixitask.R
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun TaskActiveCard(
+    modifier: Modifier = Modifier,
     title: String,
     dateTime: String,
     onClick: () -> Unit = {},
     onDone: () -> Unit = {},
     onShare: () -> Unit = {},
     onDelete: () -> Unit = {},
-    modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clip(shape = MaterialTheme.shapes.extraLarge)
-            .background(color = MaterialTheme.colorScheme.tertiary)
+            .background(color = MaterialTheme.colorScheme.secondary)
             .clickable {
                 onClick()
             },
@@ -70,7 +60,7 @@ fun TaskActiveCard(
         ) {
             Text(
                 text = title,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSecondary,
                 style = MaterialTheme.typography.headlineLarge,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2
@@ -78,7 +68,7 @@ fun TaskActiveCard(
 
             Text(
                 text = dateTime,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSecondary,
                 style = MaterialTheme.typography.bodySmall
             )
 
@@ -93,7 +83,7 @@ fun TaskActiveCard(
                     Button(
                         onClick = { onDone() },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.onTertiary,
+                            containerColor = MaterialTheme.colorScheme.onSecondary,
                             contentColor = Color.White
                         )
                     ) {
@@ -116,7 +106,7 @@ fun TaskActiveCard(
                         modifier = Modifier,
                         colors = IconButtonDefaults.iconButtonColors(
                             containerColor = Color.Transparent,
-                            contentColor = Color.Black
+                            contentColor = MaterialTheme.colorScheme.onSecondary
                         )
                     ) {
                         Icon(
@@ -131,7 +121,7 @@ fun TaskActiveCard(
                         modifier = Modifier,
                         colors = IconButtonDefaults.iconButtonColors(
                             containerColor = Color.Transparent,
-                            contentColor = Color.Black
+                            contentColor = MaterialTheme.colorScheme.onSecondary
                         )
                     ) {
                         Icon(
@@ -148,19 +138,19 @@ fun TaskActiveCard(
 
 @Composable
 fun TaskInactiveCard(
+    modifier: Modifier = Modifier,
     title: String,
     dateTime: String,
     onClick: () -> Unit = {},
     onShare: () -> Unit = {},
     onDelete: () -> Unit = {},
-    modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clip(shape = MaterialTheme.shapes.extraLarge)
-            .background(color = MaterialTheme.colorScheme.secondary)
+            .background(color = MaterialTheme.colorScheme.tertiary)
             .clickable {
                 onClick()
             },
@@ -173,13 +163,13 @@ fun TaskInactiveCard(
         ) {
             Text(
                 text = title,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onTertiary,
                 style = MaterialTheme.typography.headlineLarge,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 2
             )
 
-            Text(text = dateTime, color = Color.Black, style = MaterialTheme.typography.bodySmall)
+            Text(text = dateTime, color = MaterialTheme.colorScheme.onTertiary, style = MaterialTheme.typography.bodySmall)
 
             Row(
                 modifier = Modifier
@@ -200,7 +190,7 @@ fun TaskInactiveCard(
                             modifier = Modifier,
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = Color.Transparent,
-                                contentColor = Color.Black
+                                contentColor = MaterialTheme.colorScheme.onTertiary
                             )
                         ) {
                             Icon(
@@ -215,7 +205,7 @@ fun TaskInactiveCard(
                             modifier = Modifier,
                             colors = IconButtonDefaults.iconButtonColors(
                                 containerColor = Color.Transparent,
-                                contentColor = Color.Black
+                                contentColor = MaterialTheme.colorScheme.onTertiary
                             )
                         ) {
                             Icon(
