@@ -24,29 +24,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vixiloc.vixitask.presentations.ui.theme.VixitaskTheme
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBarTransparent(
-    icon: @Composable () -> Unit = {},
-    actions: @Composable RowScope.() -> Unit = {},
-    scrollBehavior: TopAppBarScrollBehavior? = null,
-) {
-    TopAppBar(
-        title = { /*TODO*/ },
-        navigationIcon = icon,
-        modifier = Modifier.fillMaxWidth(),
-        actions = actions,
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.background,
-            navigationIconContentColor = MaterialTheme.colorScheme.onBackground,
-            actionIconContentColor = MaterialTheme.colorScheme.onBackground,
-            titleContentColor = MaterialTheme.colorScheme.onBackground
-        ),
-        scrollBehavior = scrollBehavior
-    )
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarBack(
